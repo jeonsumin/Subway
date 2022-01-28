@@ -15,7 +15,7 @@ class StationDetaillCollectionViewCell: UICollectionViewCell {
     private let remainTimeLabel = UILabel()
     
     
-    func uiConfigure(){
+    func uiConfigure(with realTimeArrival: StationArrivalDatResponseModel.RealTimeArrival){
         
         backgroundColor = .systemBackground
         layer.cornerRadius = 12
@@ -32,11 +32,11 @@ class StationDetaillCollectionViewCell: UICollectionViewCell {
             addSubview($0)
         }
         
-        lineLabel.text = "한양대 방면"
+        lineLabel.text = realTimeArrival.line
         lineLabel.snp.makeConstraints{
             $0.leading.top.equalToSuperview().inset(16)
         }
-        remainTimeLabel.text = "뚝섬 도착"
+        remainTimeLabel.text = realTimeArrival.remainTime
         remainTimeLabel.snp.makeConstraints{
             $0.leading.equalTo(lineLabel)
             $0.top.equalTo(lineLabel.snp.bottom).offset(16)
