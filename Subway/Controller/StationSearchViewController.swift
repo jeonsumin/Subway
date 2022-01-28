@@ -10,11 +10,12 @@ import UIKit
 import Alamofire
 
 class StationSearchViewController: UIViewController {
-
+    
     
     //MARK: - Properties
+    private var stations:[Station] = []
     private let tableView = UITableView()
-    private var numberOfCell: Int = 0
+    //    private var numberOfCell: Int = 0
     
     
     //MARK: - LifeCycle
@@ -24,7 +25,7 @@ class StationSearchViewController: UIViewController {
         setNavigationItems()
         setTableViewLayout()
         
-        reqeustStationName()
+        
     }
     
     //MARK: - Function
@@ -53,15 +54,17 @@ class StationSearchViewController: UIViewController {
         }
     }
     
-    private func reqeustStationName(){
-        let urlString = "http://openapi.seoul.go.kr:8088/sample/json/SearchInfoBySubwayNameService/1/5/서울역"
-
+    private func reqeustStationName(from stationName: String){
+        let urlString = "http://openapi.seoul.go.kr:8088/sample/json/SearchInfoBySubwayNameService/1/5/\(stationName)"
+        
         AF
             .request(urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "" )
-            .responseDecodable(of: StationResponseModel.self) { response in
-                guard case .success(let data) = response.result else { return }
+            .responseDecodable(of: StationResponseModel.self) {[weak self] response in
+                guard let self = self,
+                      case .success(let data) = response.result else { return }
                 
-                print(data.stations)
+                self.stations = data.stations
+                self.tableView.reloadData()
             }
             .resume()
     }
@@ -70,19 +73,22 @@ class StationSearchViewController: UIViewController {
 //MARK: -UITableViewDataSource
 extension StationSearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return numberOfCell
+        return stations.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        cell.textLabel?.text = "\(indexPath.row)"
+        
+        let station = stations[indexPath.row]
+        cell.textLabel?.text = "\(station.stationName)"
+        cell.detailTextLabel?.text = "\(station.lineNumber)"
         return cell
     }
 }
 
 //MARK: -UITableViewDelegate
 extension StationSearchViewController: UITableViewDelegate {
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let VC = StationDetailViewController()
         navigationController?.pushViewController(VC, animated: true)
@@ -92,14 +98,18 @@ extension StationSearchViewController: UITableViewDelegate {
 
 //MARK: -UISearchBarDelegate
 extension StationSearchViewController: UISearchBarDelegate{
-
+    
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        numberOfCell = 10
+        //        numberOfCell = 10
         tableView.reloadData()
         tableView.isHidden = false
     }
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        numberOfCell = 0
+        //        numberOfCell = 0
         tableView.isHidden = true
+        stations = [] //텍스트 입력이 끝났을 경우 지하철 정보 초기화
+    }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        reqeustStationName(from: searchText)
     }
 }
