@@ -14,6 +14,8 @@
 		DE61A5C727A26B540034D52D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE61A5C527A26B540034D52D /* LaunchScreen.storyboard */; };
 		DE61A5D027A26D1B0034D52D /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = DE61A5CF27A26D1B0034D52D /* SnapKit */; };
 		DE61A5D327A26D490034D52D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = DE61A5D227A26D490034D52D /* Alamofire */; };
+		DE96C98727A367A300D28E3D /* StationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE96C98627A367A300D28E3D /* StationDetailViewController.swift */; };
+		DE96C98927A36A3300D28E3D /* StationDetaillCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE96C98827A36A3300D28E3D /* StationDetaillCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		DE61A5C327A26B540034D52D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE61A5C627A26B540034D52D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DE61A5C827A26B540034D52D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DE96C98627A367A300D28E3D /* StationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDetailViewController.swift; sourceTree = "<group>"; };
+		DE96C98827A36A3300D28E3D /* StationDetaillCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDetaillCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,14 +62,24 @@
 		DE61A5B927A26B530034D52D /* Subway */ = {
 			isa = PBXGroup;
 			children = (
+				DE96C98527A3678300D28E3D /* Controller */,
 				DE61A5BA27A26B530034D52D /* AppDelegate.swift */,
 				DE61A5BC27A26B530034D52D /* SceneDelegate.swift */,
-				DE61A5BE27A26B530034D52D /* StationSearchViewController.swift */,
 				DE61A5C327A26B540034D52D /* Assets.xcassets */,
 				DE61A5C527A26B540034D52D /* LaunchScreen.storyboard */,
 				DE61A5C827A26B540034D52D /* Info.plist */,
 			);
 			path = Subway;
+			sourceTree = "<group>";
+		};
+		DE96C98527A3678300D28E3D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DE61A5BE27A26B530034D52D /* StationSearchViewController.swift */,
+				DE96C98627A367A300D28E3D /* StationDetailViewController.swift */,
+				DE96C98827A36A3300D28E3D /* StationDetaillCollectionViewCell.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,9 +160,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE96C98727A367A300D28E3D /* StationDetailViewController.swift in Sources */,
 				DE61A5BF27A26B530034D52D /* StationSearchViewController.swift in Sources */,
 				DE61A5BB27A26B530034D52D /* AppDelegate.swift in Sources */,
 				DE61A5BD27A26B530034D52D /* SceneDelegate.swift in Sources */,
+				DE96C98927A36A3300D28E3D /* StationDetaillCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

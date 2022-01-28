@@ -66,7 +66,12 @@ extension StationSearchViewController: UITableViewDataSource {
 
 //MARK: -UITableViewDelegate
 extension StationSearchViewController: UITableViewDelegate {
-    
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let VC = StationDetailViewController()
+        navigationController?.pushViewController(VC, animated: true)
+        
+    }
 }
 
 //MARK: -UISearchBarDelegate
@@ -74,6 +79,7 @@ extension StationSearchViewController: UISearchBarDelegate{
 
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         numberOfCell = 10
+        tableView.reloadData()
         tableView.isHidden = false
     }
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
