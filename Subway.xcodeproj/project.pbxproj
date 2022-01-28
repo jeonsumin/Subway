@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DE407E4D27A377BC003E273D /* StationResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE407E4C27A377BC003E273D /* StationResponseModel.swift */; };
+		DE407E5027A37C23003E273D /* StationArrivalDatResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE407E4F27A37C23003E273D /* StationArrivalDatResponseModel.swift */; };
 		DE61A5BB27A26B530034D52D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE61A5BA27A26B530034D52D /* AppDelegate.swift */; };
 		DE61A5BD27A26B530034D52D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE61A5BC27A26B530034D52D /* SceneDelegate.swift */; };
 		DE61A5BF27A26B530034D52D /* StationSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE61A5BE27A26B530034D52D /* StationSearchViewController.swift */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DE407E4C27A377BC003E273D /* StationResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationResponseModel.swift; sourceTree = "<group>"; };
+		DE407E4F27A37C23003E273D /* StationArrivalDatResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationArrivalDatResponseModel.swift; sourceTree = "<group>"; };
 		DE61A5B727A26B530034D52D /* Subway.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Subway.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE61A5BA27A26B530034D52D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE61A5BC27A26B530034D52D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +47,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DE407E4E27A37C0E003E273D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DE407E4C27A377BC003E273D /* StationResponseModel.swift */,
+				DE407E4F27A37C23003E273D /* StationArrivalDatResponseModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		DE61A5AE27A26B530034D52D = {
 			isa = PBXGroup;
 			children = (
@@ -62,6 +75,7 @@
 		DE61A5B927A26B530034D52D /* Subway */ = {
 			isa = PBXGroup;
 			children = (
+				DE407E4E27A37C0E003E273D /* Model */,
 				DE96C98527A3678300D28E3D /* Controller */,
 				DE61A5BA27A26B530034D52D /* AppDelegate.swift */,
 				DE61A5BC27A26B530034D52D /* SceneDelegate.swift */,
@@ -161,8 +175,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE96C98727A367A300D28E3D /* StationDetailViewController.swift in Sources */,
+				DE407E4D27A377BC003E273D /* StationResponseModel.swift in Sources */,
 				DE61A5BF27A26B530034D52D /* StationSearchViewController.swift in Sources */,
 				DE61A5BB27A26B530034D52D /* AppDelegate.swift in Sources */,
+				DE407E5027A37C23003E273D /* StationArrivalDatResponseModel.swift in Sources */,
 				DE61A5BD27A26B530034D52D /* SceneDelegate.swift in Sources */,
 				DE96C98927A36A3300D28E3D /* StationDetaillCollectionViewCell.swift in Sources */,
 			);

@@ -7,6 +7,7 @@
 
 import SnapKit
 import UIKit
+import Alamofire
 
 class StationDetailViewController: UIViewController {
 
@@ -40,14 +41,26 @@ class StationDetailViewController: UIViewController {
         collectionView.snp.makeConstraints{
             $0.edges.equalToSuperview()
         }
-        
+        fetchData()
         refreshControl.addTarget(self, action: #selector(fetchData), for: .valueChanged)
+        
     }
     
     //MARK: -Function
-    @objc func fetchData(){
-        print("Refresh !")
-        refreshControl.endRefreshing()
+    @objc private func fetchData(){
+
+        let stationName = "서울역"
+        
+        let urlString = "http://swopenapi.seoul.go.kr/api/subway/sample/json/realtimeStationArrival/0/5/\(stationName.replacingOccurrences(of: "역", with: ""))"
+        AF
+            .request(urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "" )
+            .responseDecodable(of: StationArrivalDatResponseModel.self) { [weak self] response in
+                self?.refreshControl.endRefreshing()
+                
+                guard case .success(let data) = response.result else { return }
+                print(data.realtimeArrivalList)
+                
+            }.resume()
     }
 }
 
